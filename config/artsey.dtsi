@@ -131,6 +131,7 @@
 #define LAYER_ID_BT_SEL 5
 #define LAYER_ID_CUSTOM 6
 #define LAYER_ID_MOUSE 7
+#define LAYER_ID_LANGUAGE_2 8
 
 /*****************************************
  * Define how long it takes for the combos/holds to 'time out'
@@ -153,7 +154,7 @@
 / {
 	combos {
 		compatible = "zmk,combos";
-		combo_b { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO>; key-positions = <KEY_E KEY_O>; bindings = <&kp B>; };
+		combo_b { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO>; key-positions = <KEY_E KEY_O>; bindings = <&kp א>; };
 		combo_m { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO>; key-positions = <KEY_Y KEY_I KEY_O>; bindings = <&kp M>; };
 		combo_c { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO>; key-positions = <KEY_E KEY_Y>; bindings = <&kp C>; };
 		combo_n { layers = <LAYER_ID_BASE>; timeout-ms = <TIMEOUT_COMBO>; key-positions = <KEY_I KEY_O>; bindings = <&kp N>; };
@@ -195,6 +196,8 @@
 		combo_layer_bt_select { key-positions = <KEY_A KEY_E KEY_S KEY_O>; bindings = <&tog LAYER_ID_BT_SEL>; };
 		combo_bt_clr { key-positions = <KEY_R KEY_Y KEY_T KEY_I>; bindings = <&bt BT_CLR>; };
 		combo_layer_navigation { key-positions = <KEY_R KEY_E KEY_I>; bindings = <&tog LAYER_ID_NAVIGATION>; };
+		combo_layer_second_language { key-positions = <KEY_E KEY_R KEY_T KEY_O>; bindings = <&tog LAYER_ID_LANGUAGE_2>; };
+		combo_lang2_gimel { layers = <LAYER_ID_LANGUAGE_2>; timeout-ms = <TIMEOUT_COMBO>; key-positions = <KEY_R KEY_T>; bindings = <&kp ג>; };
 		/* TODO: Setup/Enable once Mouse Keys feature(s) are added to ZMK */
 		//combo_mouse { timeout-ms = <TIMEOUT_COMBO>; key-positions = <KEY_A KEY_T KEY_Y>; bindings = <&none>; };
 	};
@@ -296,6 +299,16 @@
 			>;
 		};
 		ARTSEY_LAYER_CUSTOM
+		second_language {
+			label = "lang2";
+			bindings = <
+				leading_nones
+				&layer_parentheticals_kp layer_id_parentheticals א  &kp ר     &kp ת     &layer_numbers_kp layer_id_numbers י
+				middle_nones
+				&layer_symbols_kp layer_id_symbols ל                &kp ו     &kp ב     &layer_custom_kp layer_id_custom ה
+				trailing_nones
+			>;
+		};
 		// mouse { /* TODO: Not implemented yet, needs mouse keys in upstream */
 		// 	label = "Mouse";
 		// 	bindings = <
@@ -376,6 +389,16 @@
 			>;
 		};
 		ARTSEY_LAYER_CUSTOM
+		second_language {
+			label = "lang2";
+			bindings = <
+				leading_nones
+				&layer_parentheticals_kp layer_id_parentheticals י  &kp ת     &kp ר     &layer_numbers_kp layer_id_numbers א
+				middle_nones
+				&layer_symbols_kp layer_id_symbols ה                &kp ב     &kp ו     &layer_custom_kp layer_id_custom ל
+				trailing_nones
+			>;
+		};
 		// mouse { /* TODO: Not implemented yet, needs mouse keys in upstream */
 		// 	label = "Mouse";
 		// 	bindings = <
